@@ -29,7 +29,7 @@ To verify the "Evaluations" from the static phase, automatically generated Syste
 - **Coverage:** Achieved 100% SVA coverage for `cdc_sync` and `cdc_handshake` protocols.
 - **Firings:** 0 Firings. The testbench data remained perfectly stable during the entire 4-phase Request/Acknowledge cycles, proving the design is dynamically safe.
 
-**Figure 10.1 — Static CDC Results** ![Static CDC Results](cdc_unit_static_results.jpg)
+**Figure 10.1 — Static CDC Results** ![Static CDC Results](cdc_unit_static_results.png)
 
 ---
 
@@ -46,9 +46,9 @@ Simulating the physical gate delays revealed the true nature of asynchronous clo
 - **Observation:** Setup and hold timing violations (`#Error: $setup`) intentionally occurred *only* on the first-stage synchronizer flip-flops (e.g., `play_sff1`, `rff1`, `aff1`). 
 - **Resolution:** This perfectly mimicked real-world metastability. By correctly identifying these boundaries and configuring the simulator to disable timing checks on these specific first-stage registers (`set VSIM_DISABLE_TIMINGCHECKS { "*sff1*" "*rff1*" "*aff1*" }`), the final simulation ran flawlessly with no unknown (`'X'`) states propagating into the system.
 
-**Figure 10.2 — Dynamic CDC Results** ![Dynamic CDC Results](cdc_unit_dynamic_results.jpg)
+**Figure 10.2 — Dynamic CDC Results** ![Dynamic CDC Results](cdc_unit_dynamic_results.png)
 
-**Figure 10.3 — Gate-Level Simulation Waveforms** ![Gate-Level Waves](cdc_unit_gatelevel_waves.jpg)
+**Figure 10.3 — Gate-Level Simulation Waveforms** ![Gate-Level Waves](cdc_unit_gatelevel_waves.png)
 
 ---
 
